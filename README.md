@@ -19,7 +19,7 @@ sudo apt install ansible git -y
 git clone https://github.com/deividduarte20/ansible_workstation.git
 ```
 
-3. Entre no diretório e 
+3. Entre no diretório 
 cd ansible_workstation 
 
 4. aplique a configuração
