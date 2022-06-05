@@ -41,6 +41,7 @@ Pacotes que serão instalados:
 - vagrant
 - vscode
 - anydesk
+- virtualbox
 - simplescreenrecorder
 - teamviewer
 - Por fim insere parâmetros no arquivo vimrc para deixar o visual e usabilidade do vim melhor
