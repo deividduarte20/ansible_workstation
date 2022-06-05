@@ -37,6 +37,7 @@ Pacotes que serão instalados:
 - snapd
 - gdebi
 - remmina
+- flameshot
 - vagrant
 - vscode
 - anydesk

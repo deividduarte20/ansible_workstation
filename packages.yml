@@ -29,11 +29,11 @@
       name: "*"
       state: latest
   
-  - name: Install a package VSCODE from the internet
+  - name: Install a package Vscode from the internet
     apt:
       deb: https://az764295.vo.msecnd.net/stable/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/code_1.67.2-1652812855_amd64.deb
 
-  - name: Install a package anydesk from the internet
+  - name: Install a package Anydesk from the internet
     apt:
       deb: https://download.anydesk.com/linux/anydesk_6.1.1-1_amd64.deb
 
@@ -45,3 +45,13 @@
     apt:
       deb: https://dn3.freedownloadmanager.org/6/latest/freedownloadmanager.deb
 
+  - name: Install a package Google Chrome from internet
+    apt:
+      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+  - name: Install SimpleScreenRecorder
+    command: snap install simplescreenrecorder
+  
+  - name: Install Virtualbox from internet
+    apt:
+      deb: https://download.virtualbox.org/virtualbox/6.1.34/virtualbox-6.1_6.1.34-150636.1~Ubuntu~jammy_amd64.deb
