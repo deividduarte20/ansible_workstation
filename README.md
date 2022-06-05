@@ -24,7 +24,7 @@ cd ansible_workstation
 
 4. aplique a configuração
 ```bash
-ansible-playbook ubuntu.yml --ask-become-pass
+ansible-playbook packages.yml --ask-become-pass
 ```
 
 >Digite a senha do usuário root para executar a playbook
