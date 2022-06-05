@@ -18,10 +18,10 @@ sudo apt install ansible git -y
 ```bash
 git clone https://github.com/deividduarte20/ansible_workstation.git
 ```
-
-3. Entre no diretório 
+3. Entre no diretório
+```bash
 cd ansible_workstation 
-
+```
 4. aplique a configuração
 ```bash
 ansible-playbook packages.yml --ask-become-pass
