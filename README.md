@@ -16,13 +16,17 @@ sudo apt install ansible git -y
 ```
 2. Clone o repositorio
 ```bash
-git clone https://github.com/deividduarte20/ansible.git
+git clone https://github.com/deividduarte20/ansible_workstation.git
 ```
 
-3. Aplique a configuração
+3. Entre no diretório e 
+cd ansible_workstation 
+
+4. aplique a configuração
 ```bash
 ansible-playbook ubuntu.yml --ask-become-pass
 ```
+
 >Digite a senha do usuário root para executar a playbook
 ___
 
