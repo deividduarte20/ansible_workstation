@@ -40,6 +40,7 @@ Pacotes que serão instalados:
 - flameshot
 - vagrant
 - vscode
+- tilix
 - anydesk
 - virtualbox
 - simplescreenrecorder
