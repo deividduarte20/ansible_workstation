@@ -44,6 +44,7 @@ Pacotes que serão instalados:
 - virtualbox
 - simplescreenrecorder
 - teamviewer
+- free download manager
 - Por fim insere parâmetros no arquivo vimrc para deixar o visual e usabilidade do vim melhor
 
 
