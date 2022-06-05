@@ -1,0 +1,47 @@
+---
+- name: Preparing Workstation
+  hosts: localhost
+  connection: local
+  become: true
+  become_method: sudo
+  tasks:
+
+  - name: Installing Linux Apps
+    become: true
+    apt:
+      name: '{{ item }}'
+      install_recommends: yes
+      state: present
+    loop:
+      - vim
+      - htop
+      - tree
+      - snapd
+      - gdebi
+      - remmina
+      - copyq
+      - flameshot
+      - curl
+
+   
+  - name: Update all packages to their latest version
+    apt:
+      name: "*"
+      state: latest
+  
+  - name: Install a package VSCODE from the internet
+    apt:
+      deb: https://az764295.vo.msecnd.net/stable/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/code_1.67.2-1652812855_amd64.deb
+
+  - name: Install a package anydesk from the internet
+    apt:
+      deb: https://download.anydesk.com/linux/anydesk_6.1.1-1_amd64.deb
+
+  - name: Install a package Team Viewer from internet
+    apt:
+      deb: https://dl.teamviewer.com/download/linux/version_15x/teamviewer_15.30.3_amd64.deb?utm_source=google&utm_medium=cpc&utm_campaign=br|b|pr|19|jul|Brand-Download-Exact|free|t0|0|dl|g&utm_content=Exact_Brand&utm_term=teamviewer+instalar&gclid=EAIaIQobChMIq7XO0umW-AIVQ-ZcCh2NsgyHEAAYASAAEgI1bPD_BwE
+
+  - name: Install a package Free Download Manager from internet
+    apt:
+      deb: https://dn3.freedownloadmanager.org/6/latest/freedownloadmanager.deb
+
