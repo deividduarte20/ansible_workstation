@@ -34,6 +34,7 @@ Pacotes que serão instalados:
 - vim
 - htop
 - tree
+- copyq
 - snapd
 - gdebi
 - remmina
