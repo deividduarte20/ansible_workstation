@@ -22,7 +22,7 @@ git clone https://github.com/deividduarte20/ansible_workstation.git
 ```bash
 cd ansible_workstation 
 ```
-4. aplique a configuração
+4. Aplique a configuração
 ```bash
 ansible-playbook packages.yml --ask-become-pass
 ```
