@@ -41,19 +41,11 @@
     apt:
       deb: https://dl.teamviewer.com/download/linux/version_15x/teamviewer_15.30.3_amd64.deb?utm_source=google&utm_medium=cpc&utm_campaign=br|b|pr|19|jul|Brand-Download-Exact|free|t0|0|dl|g&utm_content=Exact_Brand&utm_term=teamviewer+instalar&gclid=EAIaIQobChMIq7XO0umW-AIVQ-ZcCh2NsgyHEAAYASAAEgI1bPD_BwE
 
-  - name: Install a package Free Download Manager from internet
-    apt:
-      deb: https://dn3.freedownloadmanager.org/6/latest/freedownloadmanager.deb
-
   - name: Install a package Google Chrome from internet
     apt:
       deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-  - name: Install SimpleScreenRecorder
-    command: snap install simplescreenrecorder
-  
+ 
   - name: Install Virtualbox from internet
     apt:
       deb: https://download.virtualbox.org/virtualbox/6.1.34/virtualbox-6.1_6.1.34-150636.1~Ubuntu~jammy_amd64.deb
-
 
