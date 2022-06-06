@@ -1,4 +1,4 @@
-# Ferramentas para estação de trabalho Linux
+# Ferramentas para estação de trabalho Linux (Ubuntu)
 
 Este repositório contém script para automatizar e acelerar a preparação da minha máquina
 
