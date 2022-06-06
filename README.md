@@ -45,6 +45,7 @@ Pacotes que serão instalados:
 - anydesk
 - virtualbox
 - teamviewer
+- docker
 
 Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato, as informações para contato se encontram na página principal do github.
 
