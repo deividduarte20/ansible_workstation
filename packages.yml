@@ -49,3 +49,6 @@
     apt:
       deb: https://download.virtualbox.org/virtualbox/6.1.34/virtualbox-6.1_6.1.34-150636.1~Ubuntu~jammy_amd64.deb
 
+  - name: Install docker
+    import_tasks: docker.yml
+ 
