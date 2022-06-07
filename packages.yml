@@ -61,9 +61,6 @@
   - name: Install docker
     import_tasks: docker.yml
 
- #- name: Install terraform
- #    import_tasks: terraform.yml
-
   - name: Installing AWS CLI via pip3
     become: true
     pip:
