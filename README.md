@@ -1,8 +1,5 @@
 # Ferramentas para estação de trabalho Linux (Ubuntu e derivados)
 
-Este repositório contém script para automatizar e acelerar a preparação da minha máquina
-
-
 Os scripts foram utilizados no ubuntu e funciona em distribuições derivadas
 ___
 
