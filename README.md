@@ -41,10 +41,13 @@ Pacotes que serão instalados:
 - flameshot
 - vagrant
 - vscode
+- vscode extensions
 - tilix
 - anydesk
 - virtualbox
 - teamviewer
+- docker
+- awscli
 
 Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato, as informações para contato se encontram na página principal do github.
 
