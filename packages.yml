@@ -22,6 +22,8 @@
       - copyq
       - flameshot
       - curl
+      - gnupg
+      - software-properties-common  
 
    
   - name: Update all packages to their latest version
@@ -49,6 +51,18 @@
     apt:
       deb: https://download.virtualbox.org/virtualbox/6.1.34/virtualbox-6.1_6.1.34-150636.1~Ubuntu~jammy_amd64.deb
 
+  - name: Install Virtual Studio Code Extensions
+    shell:
+      cmd: code --install-extension '{{ item }}'
+    loop:
+      - ms-python.python
+      - hashicorp.terraform  
+
   - name: Install docker
     import_tasks: docker.yml
- 
+
+  - name: Installing AWS CLI via pip3
+    become: true
+    pip:
+      name: awscli
+      executable: pip3
