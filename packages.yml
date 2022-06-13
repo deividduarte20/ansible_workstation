@@ -56,3 +56,6 @@
     pip:
       name: awscli
       executable: pip3
+      
+  - name: Inserir configuracoes de seguranca adicionais
+    import_tasks: docker.yml
