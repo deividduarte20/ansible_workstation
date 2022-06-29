@@ -19,11 +19,14 @@
       - snapd
       - gdebi
       - remmina
+      - python3-pip
       - copyq
       - flameshot
       - curl
       - gnupg
-      - software-properties-common  
+      - software-properties-common
+      - vagrant
+      - tilix
 
    
   - name: Update all packages to their latest version
