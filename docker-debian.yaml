@@ -24,4 +24,4 @@
       apt: update_cache=yes name=docker-ce state=latest
 
     - name: add teste user to group docker
-      shell: usermod -a -G docker teste
+      shell: usermod -a -G docker $USER
