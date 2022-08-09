@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  #become: true
 
   tasks:
     - name: Update apt using apt
@@ -25,9 +24,6 @@
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
-
-    - name: Install Docker Module for Python
-      pip:
 
     - name: add teste user to group docker
       shell: usermod -a -G docker teste
