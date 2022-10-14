@@ -5,7 +5,6 @@
   become: true
   become_method: sudo
   tasks:
-
   - name: Installing Linux Apps
     become: true
     apt:
@@ -59,6 +58,3 @@
     pip:
       name: awscli
       executable: pip3
-      
-  - name: Import docker
-    import_tasks: docker-ubuntu.yaml
