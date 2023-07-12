@@ -49,13 +49,11 @@ Pacotes que serão instalados:
 - tilix
 - anydesk
 - virtualbox
-- teamviewer
 - Free download manager
 - awscli
 - docker
 - helm
 - terraform
-- docker
 - eksctl
 - kubectl
 
