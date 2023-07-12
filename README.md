@@ -5,7 +5,7 @@ ___
 
 ## Preparo da estação de trabalho
 
-> Leia o arquivo antes de aplicar e tenha certeza que entendeu tudo que será feito
+> Leia atentamente os passos a serem executados
 
 1. Instale Ansible e o Git
 ```bash
@@ -19,7 +19,12 @@ git clone https://github.com/deividduarte20/ansible_workstation.git
 ```bash
 cd ansible_workstation 
 ```
-4. Aplique a configuração
+4. Caso queira testar a playbook antes de executar
+```bash
+ansible-playbook packages.yml --ask-become-pass --syntax-check 
+```
+
+5. Aplique a configuração
 ```bash
 ansible-playbook packages.yml --ask-become-pass
 ```
