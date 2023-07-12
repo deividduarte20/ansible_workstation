@@ -35,16 +35,24 @@ Pacotes que serão instalados:
 - snapd
 - gdebi
 - remmina
+- python3-pip
 - flameshot
+- curl
 - vagrant
 - vscode
-- vscode extensions
+- gzip
 - tilix
 - anydesk
 - virtualbox
 - teamviewer
+- Free download manager
 - awscli
 - docker
+- helm
+- terraform
+- docker
+- eksctl
+- kubectl
 
-Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato, as informações para contato se encontram na página principal do github.
+Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato ou criar uma issue, as informações para contato se encontram na página principal do github.
 

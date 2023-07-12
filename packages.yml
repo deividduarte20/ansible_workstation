@@ -23,38 +23,170 @@
       - flameshot
       - curl
       - gnupg
-      - software-properties-common
       - vagrant
       - tilix
-
+      - gzip
+      - unzip
    
-  - name: Update all packages to their latest version
+  - name: Atualizar lista de pacotes
     apt:
-      name: "*"
-      state: latest
+      update_cache: yes
   
   - name: Install a package Vscode from the internet
     apt:
-      deb: https://az764295.vo.msecnd.net/stable/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/code_1.67.2-1652812855_amd64.deb
+      deb: https://az764295.vo.msecnd.net/stable/660393deaaa6d1996740ff4880f1bad43768c814/code_1.80.0-1688479026_amd64.deb 
 
   - name: Install a package Anydesk from the internet
     apt:
-      deb: https://download.anydesk.com/linux/anydesk_6.1.1-1_amd64.deb
-
-  - name: Install a package Team Viewer from internet
-    apt:
-      deb: https://dl.teamviewer.com/download/linux/version_15x/teamviewer_15.30.3_amd64.deb?utm_source=google&utm_medium=cpc&utm_campaign=br|b|pr|19|jul|Brand-Download-Exact|free|t0|0|dl|g&utm_content=Exact_Brand&utm_term=teamviewer+instalar&gclid=EAIaIQobChMIq7XO0umW-AIVQ-ZcCh2NsgyHEAAYASAAEgI1bPD_BwE
+      deb: https://download.anydesk.com/linux/anydesk_6.2.1-1_amd64.deb
 
   - name: Install a package Google Chrome from internet
     apt:
       deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
- 
-  - name: Install Virtualbox from internet
+  
+  - name: Install a um package Free Download manager
     apt:
-      deb: https://download.virtualbox.org/virtualbox/6.1.34/virtualbox-6.1_6.1.34-150636.1~Ubuntu~jammy_amd64.deb
+      deb: https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
+
+  - name: Install required packages
+    apt:
+      name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg', 'lsb-release']
+
+  - name: Add VirtualBox GPG key
+    apt_key:
+      url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+      state: present
+
+  - name: Add VirtualBox repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_lsb.codename }} contrib
+      state: present
+
+  - name: Install VirtualBox
+    apt:
+      name: virtualbox-6.1
+      state: present
 
   - name: Installing AWS CLI via pip3
     become: true
     pip:
       name: awscli
       executable: pip3
+
+  - name: Update apt cache
+    apt:
+      update_cache: yes
+
+  - name: Install required packages
+    apt:
+      name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg', 'lsb-release']
+      state: present
+
+  - name: Add Docker GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+      state: present
+
+  - name: Install Docker
+    apt:
+      name: docker-ce
+      state: present
+  
+  - name: Add user to docker group
+    command: usermod -a -G docker "{{ ansible_user }}"
+  
+  - name: Allow access docker in your user
+    command: chmod 666 /var/run/docker.sock  
+
+  - name: Install eksctl
+    shell: |
+      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      sudo mv /tmp/eksctl /usr/local/bin
+      eksctl version
+
+  - name: Executar comando curl e salvar o script helm
+    command: curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+
+  - name: Executar comando chmod
+    command: chmod 700 get_helm.sh
+    args:
+      chdir: .
+
+  - name: Executar script get_helm.sh
+    command: ./get_helm.sh
+    args:
+      chdir: .
+
+  - name: Download Terraform
+    get_url:
+      url: "https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip"
+      dest: "/tmp/terraform.zip"
+
+  - name: Unzip Terraform
+    unarchive:
+      src: "/tmp/terraform.zip"
+      dest: "/usr/local/bin"
+      remote_src: yes
+      creates: "/usr/local/bin/terraform"
+
+  - name: Set Terraform permissions
+    file:
+      path: "/usr/local/bin/terraform"
+      mode: 0755
+  
+  - name: Install apt-transport-https
+    apt:
+      name: apt-transport-https
+      state: present
+
+  - name: Add Kubernetes APT key
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+  - name: Add Kubernetes APT repository
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      filename: kubernetes.list
+
+  - name: Install kubectl
+    apt:
+      name: kubectl
+      state: present
+
+  - name: Download Kind binary
+    get_url:
+      url: "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-linux-amd64"
+      dest: "/usr/local/bin/kind"
+      mode: '0755'
+
+  - name: Create Kind configuration
+    copy:
+      content: |
+        kind: Cluster
+        apiVersion: kind.x-k8s.io/v1alpha4
+        nodes:
+        - role: control-plane
+          kubeadmConfigPatches:
+          - |
+            kind: InitConfiguration
+            nodeRegistration:
+              kubeletExtraArgs:
+                node-labels: "ingress-ready=true"
+          extraPortMappings:
+          - containerPort: 80
+            hostPort: 8080
+            protocol: TCP
+      dest: "$HOME/kind-config.yaml"
+
+  - name: Create Kind cluster
+    shell: kind create cluster --config $HOME/kind-config.yaml
+    args:
+      executable: /bin/bash
+      creates: "$HOME/.kube/config"
