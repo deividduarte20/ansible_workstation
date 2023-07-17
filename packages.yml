@@ -27,6 +27,7 @@
       - tilix
       - gzip
       - unzip
+      - ssh
    
   - name: Atualizar lista de pacotes
     apt:
