@@ -58,6 +58,7 @@ Pacotes que serão instalados:
 - kubectl
 - ssh
 - obs-studio
+- jq
 
 Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato ou criar uma issue, as informações para contato se encontram na página principal do github.
 
