@@ -29,6 +29,7 @@
       - unzip
       - ssh
       - obs-studio
+      - jq
    
   - name: Atualizar lista de pacotes
     apt:
