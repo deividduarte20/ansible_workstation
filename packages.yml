@@ -28,6 +28,7 @@
       - gzip
       - unzip
       - ssh
+      - obs-studio
    
   - name: Atualizar lista de pacotes
     apt:
