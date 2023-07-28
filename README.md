@@ -39,13 +39,13 @@ Pacotes que serão instalados:
 - copyq
 - snapd
 - gdebi
-- remmina
 - python3-pip
 - flameshot
 - curl
 - vagrant
 - vscode
 - gzip
+- unzip
 - tilix
 - anydesk
 - virtualbox
@@ -61,4 +61,3 @@ Pacotes que serão instalados:
 - jq
 
 Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato ou criar uma issue, as informações para contato se encontram na página principal do github.
-

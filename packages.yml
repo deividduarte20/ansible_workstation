@@ -17,7 +17,6 @@
       - tree
       - snapd
       - gdebi
-      - remmina
       - python3-pip
       - copyq
       - flameshot
@@ -69,6 +68,10 @@
     apt:
       name: virtualbox-6.1
       state: present
+
+  - name: Install kubectx and kubens
+    apt:
+      deb: http://ftp.de.debian.org/debian/pool/main/k/kubectx/kubectx_0.9.3-1_all.deb
 
   - name: Installing AWS CLI via pip3
     become: true
