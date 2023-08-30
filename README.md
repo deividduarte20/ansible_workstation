@@ -59,5 +59,6 @@ Pacotes que serão instalados:
 - ssh
 - obs-studio
 - jq
+- golang
 
 Espero que tenha gostado, caso tenha alguma sugestão de melhoria favor entrar em contato ou criar uma issue, as informações para contato se encontram na página principal do github.
