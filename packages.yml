@@ -108,7 +108,10 @@
     command: usermod -a -G docker "{{ ansible_user }}"
   
   - name: Allow access docker in your user
-    command: chmod 666 /var/run/docker.sock  
+    command: chmod 666 /var/run/docker.sock
+
+  - name: Install eks node viewer
+    command: go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
 
   - name: Install eksctl
     shell: |
