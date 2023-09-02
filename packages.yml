@@ -70,9 +70,23 @@
       name: virtualbox-6.1
       state: present
 
-  - name: Install kubectx and kubens
-    apt:
-      deb: http://ftp.de.debian.org/debian/pool/main/k/kubectx/kubectx_0.9.3-1_all.deb
+  - name: Baixar o kubectx
+    get_url:
+      url: https://github.com/ahmetb/kubectx/archive/master.zip
+      dest: /tmp/kubectx.zip
+
+  - name: Extrair o kubectx
+    unarchive:
+      src: /tmp/kubectx.zip
+      dest: /tmp
+
+  - name: Mover o kubens para /usr/local/bin
+    command: mv /tmp/kubectx-master/kubens /usr/local/bin/
+    args:
+      creates: /usr/local/bin/kubens
+
+  - name: Dar permissões de execução ao kubens
+    command: chmod +x /usr/local/bin/kubens
 
   - name: Installing AWS CLI via pip3
     become: true
@@ -105,13 +119,10 @@
       state: present
   
   - name: Add user to docker group
-    command: usermod -a -G docker "{{ ansible_user }}"
+    command: usermod -a -G docker $USER
   
   - name: Allow access docker in your user
     command: chmod 666 /var/run/docker.sock
-
-  - name: Install eks node viewer
-    command: go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
 
   - name: Install eksctl
     shell: |
@@ -175,28 +186,3 @@
       url: "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-linux-amd64"
       dest: "/usr/local/bin/kind"
       mode: '0755'
-
-  - name: Create Kind configuration
-    copy:
-      content: |
-        kind: Cluster
-        apiVersion: kind.x-k8s.io/v1alpha4
-        nodes:
-        - role: control-plane
-          kubeadmConfigPatches:
-          - |
-            kind: InitConfiguration
-            nodeRegistration:
-              kubeletExtraArgs:
-                node-labels: "ingress-ready=true"
-          extraPortMappings:
-          - containerPort: 80
-            hostPort: 8080
-            protocol: TCP
-      dest: "$HOME/kind-config.yaml"
-
-  - name: Create Kind cluster
-    shell: kind create cluster --config $HOME/kind-config.yaml
-    args:
-      executable: /bin/bash
-      creates: "$HOME/.kube/config"
