@@ -30,6 +30,7 @@
       - obs-studio
       - jq
       - golang
+      - gnome-tweaks
    
   - name: Atualizar lista de pacotes
     apt:
