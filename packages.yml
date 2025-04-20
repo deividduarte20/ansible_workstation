@@ -28,6 +28,7 @@
           - virtualbox
           - tilix
           - zsh
+          - obs-studio
         state: present
 
     # Docker
